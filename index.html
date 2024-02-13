@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valentine's Day Website</title>
   <style>
-    /* Existing CSS styles */
     body {
       font-family: Arial, sans-serif;
       background-color: #fce4ec; /* Light pink background */
@@ -15,26 +14,33 @@
     h1 {
       color: #c2185b; /* Pink heading color */
     }
-    /* New CSS for heart animation */
-    .heart-animation {
-      position: absolute;
-      z-index: 1;
-      pointer-events: none;
-      animation: heartBeat 1s ease-out forwards;
+    #heartButton {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
-    @keyframes heartBeat {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.5);
-        opacity: 0.7;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+    #heartIcon {
+      font-size: 50px;
+      color: #c2185b; /* Pink heart color */
+    }
+    #carouselContainer {
+      display: none; /* Hide the carousel by default */
+      overflow-x: auto;
+      white-space: nowrap;
+      margin-top: 20px;
+    }
+    .carouselImage {
+      display: inline-block;
+      width: 200px; /* Set the width of the images */
+      height: auto;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    #text {
+      margin-top: 20px;
+      display: none;
+color: #c2185b;
+font-size: 24px;
     }
   </style>
 </head>
@@ -46,10 +52,8 @@
     <span id="heartIcon">&#10084;</span>
   </button>
 
-  <!-- Existing carousel and text elements -->
   <div id="carouselContainer">
     <!-- Add 12 carousel images from images/1.jpeg to images/12.jpeg -->
- <!-- Add 12 carousel images from images/1.jpeg to images/12.jpeg -->
     <img class="carouselImage" src="images/1.jpeg" alt="Valentine's Day Image 1">
     <img class="carouselImage" src="images/2.jpeg" alt="Valentine's Day Image 2">
     <img class="carouselImage" src="images/3.jpeg" alt="Valentine's Day Image 3">
@@ -68,40 +72,16 @@
     Я тебя безумно люблю и ценю каждый проведенный с тобой миг. Be my valentine <3
   </div>
 
-  <!-- New heart animation elements -->
-  <div id="heartAnimations"></div>
-
   <script>
     function toggleCarousel() {
       var carousel = document.getElementById("carouselContainer");
-      var text = document.getElementById("text");
+var text = document.getElementById("text");
       if (carousel.style.display === "none") {
         carousel.style.display = "block";
-        text.style.display = "block";
+text.style.display = "block";
       } else {
         carousel.style.display = "none";
-        text.style.display = "none";
-      }
-
-      // Add heart animations
-      addHeartAnimations();
-    }
-
-    function addHeartAnimations() {
-      var heartAnimations = document.getElementById("heartAnimations");
-      var numAnimations = 10; // Number of heart animations to add
-
-      // Clear previous animations
-      heartAnimations.innerHTML = '';
-
-      // Add new heart animations
-      for (var i = 0; i < numAnimations; i++) {
-        var heart = document.createElement("span");
-        heart.classList.add("heart-animation");
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.top = Math.random() * window.innerHeight + "px";
-        heart.innerHTML = "&#10084;";
-        heartAnimations.appendChild(heart);
+text.style.display = "none";
       }
     }
   </script>
