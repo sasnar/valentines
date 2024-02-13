@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day Website</title>
+  <style>
+    /* Existing CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fce4ec; /* Light pink background */
+      text-align: center;
+      padding-top: 50px;
+    }
+    h1 {
+      color: #c2185b; /* Pink heading color */
+    }
+    /* New CSS for heart animation */
+    .heart-animation {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      animation: heartBeat 1s ease-out forwards;
+    }
+    @keyframes heartBeat {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Valentine's Day!</h1>
+
+  <button id="heartButton" onclick="toggleCarousel()">
+    <span id="heartIcon">&#10084;</span>
+  </button>
+
+  <!-- Existing carousel and text elements -->
+  <div id="carouselContainer">
+    <!-- Add 12 carousel images from images/1.jpeg to images/12.jpeg -->
+ <!-- Add 12 carousel images from images/1.jpeg to images/12.jpeg -->
+    <img class="carouselImage" src="images/1.jpeg" alt="Valentine's Day Image 1">
+    <img class="carouselImage" src="images/2.jpeg" alt="Valentine's Day Image 2">
+    <img class="carouselImage" src="images/3.jpeg" alt="Valentine's Day Image 3">
+    <img class="carouselImage" src="images/4.jpeg" alt="Valentine's Day Image 4">
+    <img class="carouselImage" src="images/5.jpeg" alt="Valentine's Day Image 5">
+    <img class="carouselImage" src="images/6.jpeg" alt="Valentine's Day Image 6">
+    <img class="carouselImage" src="images/7.jpeg" alt="Valentine's Day Image 7">
+    <img class="carouselImage" src="images/8.jpeg" alt="Valentine's Day Image 8">
+    <img class="carouselImage" src="images/9.jpeg" alt="Valentine's Day Image 9">
+    <img class="carouselImage" src="images/10.jpeg" alt="Valentine's Day Image 10">
+    <img class="carouselImage" src="images/11.jpeg" alt="Valentine's Day Image 11">
+    <img class="carouselImage" src="images/12.jpeg" alt="Valentine's Day Image 12">
+  </div>
+
+  <div id="text">
+    Я тебя безумно люблю и ценю каждый проведенный с тобой миг. Be my valentine <3
+  </div>
+
+  <!-- New heart animation elements -->
+  <div id="heartAnimations"></div>
+
+  <script>
+    function toggleCarousel() {
+      var carousel = document.getElementById("carouselContainer");
+      var text = document.getElementById("text");
+      if (carousel.style.display === "none") {
+        carousel.style.display = "block";
+        text.style.display = "block";
+      } else {
+        carousel.style.display = "none";
+        text.style.display = "none";
+      }
+
+      // Add heart animations
+      addHeartAnimations();
+    }
+
+    function addHeartAnimations() {
+      var heartAnimations = document.getElementById("heartAnimations");
+      var numAnimations = 10; // Number of heart animations to add
+
+      // Clear previous animations
+      heartAnimations.innerHTML = '';
+
+      // Add new heart animations
+      for (var i = 0; i < numAnimations; i++) {
+        var heart = document.createElement("span");
+        heart.classList.add("heart-animation");
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = Math.random() * window.innerHeight + "px";
+        heart.innerHTML = "&#10084;";
+        heartAnimations.appendChild(heart);
+      }
+    }
+  </script>
+
+</body>
+</html>
